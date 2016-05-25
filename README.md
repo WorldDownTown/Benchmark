@@ -1,5 +1,5 @@
 # Benchmark
-The Benchmark module provides methods to measure and report the time used to execute Swift code.
+The Benchmark⏲ module provides methods to measure and report the time used to execute Swift code.
 
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
@@ -73,6 +73,18 @@ class Bar {
 Foo().execute()
 
 Bar().execute()  // Benchmark: 0.0001509786 sec.
+```
+
+### Using operator
+
+```swift
+import Benchmark
+
+// same as Benchmark.measure {}
+⏲{
+    for _ in 0...10000000 { }
+}
+// Benchmark: 0.1653281017 sec.
 ```
 
 ## Contributing

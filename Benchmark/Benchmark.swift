@@ -40,3 +40,8 @@ public struct Benchmark {
         benchmark.finish()
     }
 }
+
+prefix operator ⏲ { }
+public prefix func ⏲(@noescape handler: Void -> Void) {
+    Benchmark.measure(block: handler)
+}
