@@ -6,21 +6,21 @@
 //  Copyright © 2016年 com.shoji. All rights reserved.
 //
 
-import Foundation
+import CoreFoundation
 
 public struct Benchmark {
 
-    private let startTimeInterval: NSTimeInterval
+    private let startTimeInterval: CFAbsoluteTime
     private let key: String
     private static var sharedInstance: Benchmark?
 
     public init(key: String) {
-        startTimeInterval = NSDate().timeIntervalSinceReferenceDate
+        startTimeInterval = CFAbsoluteTimeGetCurrent()
         self.key = key
     }
 
     public func finish() {
-        let elapsed = NSDate().timeIntervalSinceReferenceDate - startTimeInterval
+        let elapsed = CFAbsoluteTimeGetCurrent() - startTimeInterval
         let formatedElapsed = String(format: "%.5f", elapsed)
         print("\(key): \(formatedElapsed) sec.")
     }
