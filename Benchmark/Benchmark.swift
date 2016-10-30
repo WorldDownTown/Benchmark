@@ -25,7 +25,7 @@ public struct Benchmark {
         print("\(key): \(formatedElapsed) sec.")
     }
 
-    public static func start(key: String = "Benchmark") {
+    public static func start(_ key: String = "Benchmark") {
         sharedInstance = Benchmark(key: key)
     }
 
@@ -34,14 +34,14 @@ public struct Benchmark {
         sharedInstance = nil
     }
 
-    public static func measure(key: String = "Benchmark", @noescape block: Void -> Void) {
+    public static func measure(_ key: String = "Benchmark", block: () -> ()) {
         let benchmark = Benchmark(key: key)
         block()
         benchmark.finish()
     }
 }
 
-prefix operator ⏲ { }
-public prefix func ⏲(@noescape handler: Void -> Void) {
+prefix operator ⏲
+public prefix func ⏲(handler: () -> ()) {
     Benchmark.measure(block: handler)
 }
